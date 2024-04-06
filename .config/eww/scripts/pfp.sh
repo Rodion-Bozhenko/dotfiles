@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-declare -a profiles_photos=("$HOME/Pictures/gruvbox15.png")
+declare -a profiles_photos=("$HOME/Pictures/shibainu.jpeg")
 
 for pfp in ${profiles_photos[@]}; do
   if test -f $pfp; then
