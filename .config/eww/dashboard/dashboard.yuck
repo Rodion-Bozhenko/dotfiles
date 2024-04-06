@@ -40,19 +40,18 @@
   )
 )
 
-(defwidget control [name icon tooltip onclick active]
+(defwidget control [name icon tooltip onclick onrightclick active]
   (box :class "control-container"
        :orientation "h"
        :hexpand true
        :valign "center"
        :space-evenly true
     (button :class "control-item ${name} ${active ? 'active' : ''}"
-            :orientation "h"
-            :space-evenly true
             :halign "center"
             :hexpand false
             :valign "center"
             :onclick "${onclick}"
+            :onrightclick "${onrightclick}"
             :tooltip "${tooltip}"
       (label :text "${icon}" :class "control-icon")
     )
@@ -71,25 +70,29 @@
                :icon "${network_icon}"
                :tooltip "Toggle network"
                :active "${network_status == 'Connected' ? 'true' : 'false'}"
-               :onclick "~/.config/eww/scripts/network.sh toggle")
+               :onclick "~/.config/eww/scripts/network.sh toggle"
+               :onrightclick "nm-connection-editor &")
 
       (control :name "airplane"
                :icon "${network_radio == 'on' ? '' : ''}"
                :tooltip "Airplane Mode"
                :active "${network_radio == 'on' ? false : true}"
-               :onclick "~/.config/eww/scripts/network.sh toggle-radio")
+               :onclick "~/.config/eww/scripts/network.sh toggle-radio"
+               :onrightclick "")
 
       (control :name "volume${is_muted == 'yes' ? '-muted' : ''}"
                :icon "${volume_icon}"
                :tooltip "Toggle muted"
                :active "${is_muted == 'yes' ? false : true}"
-               :onclick "~/.config/eww/scripts/volume.sh toggle-muted")
+               :onclick "~/.config/eww/scripts/volume.sh toggle-muted"
+               :onrightclick "")
 
       (control :name "mic${mic_status == 'yes' ? '-on' : ''}"
                :icon "${mic_status == 'yes' ? '' : ''}"
                :tooltip "Toggle microphone"
                :active "${mic_status == 'yes' ? true : false}"
-               :onclick "~/.config/eww/scripts/mic toggle")
+               :onclick "~/.config/eww/scripts/mic toggle"
+               :onrightclick "")
     )
     (box :class "lastrow"
          :orientation "h"
@@ -98,25 +101,29 @@
                :icon "${redshift_state == 'on' ? '' : ''}"
                :tooltip "Toggle night light"
                :active "${redshift_state == 'on' ? true : false}"
-               :onclick "~/.config/eww/scripts/redshift toggle")
+               :onclick "~/.config/eww/scripts/redshift toggle"
+               :onrightclick "")
 
       (control :name "bluetooth${bluetooth_state == 'on' ? '-on' : ''}"
                :icon "${bluetooth_state == 'on' ? '' : ''}"
                :tooltip "Toggle bluetooth"
                :active "${bluetooth_state == 'on' ? true : false}"
-               :onclick "~/.config/eww/scripts/bluetooth toggle")
+               :onclick "~/.config/eww/scripts/bluetooth toggle"
+               :onrightclick "blueman-manager &")
 
       (control :name "fullscreensht"
                :icon ""
                :tooltip "Take a full screenshot"
                :active false
-               :onclick "~/.config/eww/scripts/screensht full")
+               :onclick "~/.config/hypr/scripts/screenshot.sh s"
+               :onrightclick "")
 
       (control :name "areascreensht"
                :icon ""
                :tooltip "Take a screenshot of a selected area"
                :active false
-               :onclick "~/.config/eww/scripts/screensht area")
+               :onclick "~/.config/hypr/scripts/screenshot.sh m"
+               :onrightclick "")
     )
   )
 )
@@ -136,7 +143,7 @@
                :max 101)
         (label :class "vol-label"
                :text "${volume_icon} "
-               :valign "top"
+               :valign "end"
                :halign "start")
       )
     )
@@ -150,7 +157,7 @@
                :max 101)
         (label :class "br-label"
                :text "${br_icon} "
-               :valign "top"
+               :valign "center"
                :halign "start")
       )
     )
@@ -164,7 +171,7 @@
                :max 101)
         (label :class "mic-label"
                :text "${mic_status == 'yes' ? '' : ''} "
-               :valign "top"
+               :valign "center"
                :halign "start")
       )
     )
