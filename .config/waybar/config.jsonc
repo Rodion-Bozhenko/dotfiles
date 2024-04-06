@@ -126,9 +126,9 @@
       "on-scroll": 1,
       "on-click-right": "mode",
       "format": {
-        "months": "<span color='#ffead3'><b>{}</b></span>",
-        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b>{}</b></span>",
+        "months": "<span color='#99c1f1'><b>{}</b></span>",
+        "weekdays": "<span color='#8ff0a4'><b>{}</b></span>",
+        "today": "<span color='#62a0ea'><b>{}</b></span>",
       },
     },
     "actions": {
@@ -213,13 +213,13 @@
     "format-linked": "󰈀 {ifname} (No IP)",
     "format-disconnected": "󰖪 ",
     "tooltip-format-disconnected": "Disconnected",
-    "format-alt": "<span > {bandwidthDownBytes}</span> <span > {bandwidthUpBytes}</span>",
+    "format-alt": "<span> {bandwidthDownBytes}</span> <span> {bandwidthUpBytes}</span>",
     "interval": 2,
   },
 
   "bluetooth": {
     "format": "",
-    "rotate": 0,
+    "on-click-right": "blueman-manager",
     "format-disabled": "",
     "format-connected": " {num_connections}",
     "format-connected-battery": "{icon} {num_connections}",
