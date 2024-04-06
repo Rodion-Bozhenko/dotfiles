@@ -134,21 +134,8 @@ done
 
 swww query
 if [ $? -ne 0 ] ; then
+[ -e $XDG_RUNTIME_DIR/swww.socket ] && rm  $XDG_RUNTIME_DIR/swww.socket
     swww-daemon --format xrgb &
-    sleep 1
-    swww query
-    if [ $? -ne 0 ] ; then
-        swww clear-cache
-        swww clear 
-        swww init
-        sleep 1
-        swww query
-        if [ $? -ne 0 ] ; then
-            swww clear-cache
-            swww clear 
-            swww-daemon --format xrgb &
-        fi
-    fi
 fi
 
 Wall_Set
