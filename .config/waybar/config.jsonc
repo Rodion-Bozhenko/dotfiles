@@ -3,35 +3,32 @@
   "position": "top",
   "mod": "dock",
   "height": 31,
+  "margin-top": 3,
+  "margin-left": 6,
+  "margin-right": 6,
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
 
   "modules-left": [
     "custom/padd",
-    "custom/l_end",
     "custom/power",
-    "custom/r_end",
-    "custom/l_end",
+    "custom/padd",
     "hyprland/workspaces",
     "hyprland/window",
-    "custom/r_end",
     "custom/padd",
   ],
   "modules-center": [
     "custom/padd",
-    "custom/l_end",
     "custom/spotify",
-    "custom/r_end",
-    "custom/l_end",
+    "custom/padd",
     "idle_inhibitor",
     "clock",
-    "custom/r_end",
     "custom/padd",
   ],
   "modules-right": [
     "custom/padd",
-    "custom/l_end",
+    "custom/notification",
     "custom/wf_recorder",
     "temperature",
     "battery",
@@ -43,15 +40,12 @@
     "pulseaudio",
     "hyprland/language",
     "custom/dashboard",
-    "custom/r_end",
-    "",
     "custom/padd",
   ],
 
   "custom/power": {
     "format": "{} ",
-    "rotate": 0,
-    "on-click": "sleep 0.14 && /home/rodion/.config/hyprdots/scripts/logoutlaunch.sh",
+    "on-click": "sleep 0.14 && /home/rodion/.config/hypr/scripts/logoutlaunch.sh",
     "interval": 86400, // once every day
     "tooltip": true,
   },
@@ -59,7 +53,6 @@
   "hyprland/workspaces": {
     "format": "{icon}",
     "disable-scroll": true,
-    "rotate": 0,
     "all-outputs": true,
     "active-only": false,
     "on-click": "activate",
@@ -78,7 +71,6 @@
 
   "hyprland/window": {
     "format": "  {}",
-    "rotate": 0,
     "separate-outputs": true,
     "rewrite": {
       "rodion@phoenix:(.*)": "$1 ",
@@ -94,13 +86,12 @@
   "custom/spotify": {
     "exec": "/usr/bin/env python3 /home/rodion/.config/waybar/mediaplayer.py --player spotify",
     "format": " {}",
-    "rotate": 0,
     "return-type": "json",
     "on-click": "playerctl play-pause --player spotify",
     "on-click-right": "playerctl next --player spotify",
     "on-click-middle": "playerctl previous --player spotify",
-    "on-scroll-up": "/home/rodion/.config/hyprdots/scripts/volumecontrol.sh -p spotify i",
-    "on-scroll-down": "/home/rodion/.config/hyprdots/scripts/volumecontrol.sh -p spotify d",
+    "on-scroll-up": "/home/rodion/.config/hypr/scripts/volumecontrol.sh -p spotify i",
+    "on-scroll-down": "/home/rodion/.config/hypr/scripts/volumecontrol.sh -p spotify d",
     "max-length": 25,
     "escape": true,
     "tooltip": true,
@@ -108,7 +99,6 @@
 
   "idle_inhibitor": {
     "format": "{icon}",
-    "rotate": 0,
     "format-icons": {
       "activated": "󰥔 ",
       "deactivated": " ",
@@ -117,7 +107,6 @@
 
   "clock": {
     "format": "{:%a %d %b %H:%M}",
-    "rotate": 0,
     "format-alt": "{:%R 󰃭 %d·%m·%y}",
     "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {
@@ -146,7 +135,7 @@
     "exec": "echo ''",
     "tooltip": "false",
     "exec-if": "pgrep wf-recorder",
-    "on-click": "/home/rodion/.config/hyprdots/scripts/screenrecord.sh s",
+    "on-click": "/home/rodion/.config/hypr/scripts/screenrecord.sh s",
     "signal": 8,
   },
   "temperature": {
@@ -161,7 +150,6 @@
       "critical": 20,
     },
     "format": "{icon} {capacity}%",
-    "rotate": 0,
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
     "format-alt": "{time} {icon}",
@@ -171,7 +159,6 @@
   "cpu": {
     "interval": 1,
     "format": "󰍛 {usage}%",
-    "rotate": 0,
     "format-alt": "{icon0}{icon1}{icon2}{icon3}",
     "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
   },
@@ -184,7 +171,6 @@
     },
     "interval": 1,
     "format": "󰾆 {used}GB",
-    "rotate": 0,
     "format-m": "󰾅 {used}GB",
     "format-h": "󰓅 {used}GB",
     "format-c": " {used}GB",
@@ -234,12 +220,11 @@
 
   "pulseaudio": {
     "format": "{icon} {volume}",
-    "rotate": 0,
     "format-muted": "婢",
     "on-click": "pavucontrol -t 3",
-    "on-click-middle": "/home/rodion/.config/hyprdots/scripts/volumecontrol.sh -o m",
-    "on-scroll-up": "/home/rodion/.config/hyprdots/scripts/volumecontrol.sh -o i",
-    "on-scroll-down": "/home/rodion/.config/hyprdots/scripts/volumecontrol.sh -o d",
+    "on-click-middle": "/home/rodion/.config/hypr/scripts/volumecontrol.sh -o m",
+    "on-scroll-up": "/home/rodion/.config/hypr/scripts/volumecontrol.sh -o i",
+    "on-scroll-down": "/home/rodion/.config/hypr/scripts/volumecontrol.sh -o d",
     "tooltip-format": "{icon} {desc} // {volume}%",
     "scroll-step": 5,
     "format-icons": {
@@ -255,14 +240,34 @@
 
   "hyprland/language": {
     "format": "{short} {variant}",
-    "rotate": 0,
-    "on-click": "/home/rodion/.config/hyprdots/scripts/keyboardswitch.sh",
+    "on-click": "/home/rodion/.config/hypr/scripts/keyboardswitch.sh",
   },
 
   "custom/dashboard": {
     "format": "{} ",
-    "on-click": "sleep 0.14 && $HOME/.config/hyprdots/scripts/dashboard.sh",
+    "on-click": "sleep 0.14 && $HOME/.config/hypr/scripts/dashboard.sh",
     "tooltip": true,
+  },
+
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='#5294e2'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='#5294e2'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='#5294e2'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='#5294e2'><sup></sup></span>",
+      "dnd-inhibited-none": "",
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true,
   },
 
   // modules for padding //

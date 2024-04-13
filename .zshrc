@@ -163,7 +163,7 @@ alias gt="go test"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/rodion/google-cloud-sdk/path.zsh.inc' ]; then . '/home/rodion/google-cloud-sdk/path.zsh.inc'; fi

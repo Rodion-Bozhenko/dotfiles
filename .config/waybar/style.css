@@ -1,6 +1,4 @@
 * {
-  border: none;
-  border-radius: 0px;
   font-family: "JetBrainsMono Nerd Font";
   font-weight: bold;
   font-size: 14px;
@@ -11,6 +9,7 @@
 
 window#waybar {
   background: @bar-bg;
+  border-radius: 10px;
 }
 
 #custom-wf-recorder {
@@ -124,11 +123,25 @@ tooltip {
 #custom-rl_end,
 #custom-rr_end {
   color: @main-fg;
-  background: @main-bg;
   opacity: 1;
-  margin: 4px 0px 4px 0px;
-  padding-left: 4px;
-  padding-right: 4px;
+  margin: 4px 0px;
+  padding: 1px 4px 2px 4px;
+}
+
+#language {
+  font-size: 17px;
+  font-weight: 500;
+  padding: 0px;
+  margin-bottom: 7px;
+}
+
+#custom-power {
+  font-size: 16px;
+  padding: 1px 0px 2px 6px;
+}
+
+#custom-notification {
+  padding: 0px 8px 2px 4px;
 }
 
 #workspaces,
