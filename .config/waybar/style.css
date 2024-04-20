@@ -125,8 +125,16 @@ tooltip {
 }
 
 #custom-power {
-  font-size: 14px;
-  padding: 1px 0px 2px 6px;
+  font-size: 18px;
+  padding: 0px 7px 0px 12px;
+  border-radius: 10px;
+  background: @wb-act-bg;
+  color: @wb-act-fg;
+}
+
+#custom-power:hover {
+  background: @wb-hvr-bg;
+  color: @wb-hvr-fg;
 }
 
 #custom-notification {

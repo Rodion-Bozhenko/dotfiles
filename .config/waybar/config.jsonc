@@ -64,7 +64,7 @@
   },
 
   "custom/power": {
-    "format": "{} ",
+    "format": "{} ",
     "on-click": "sleep 0.14 && /home/rodion/.config/hypr/scripts/logoutlaunch.sh",
     "interval": 86400, // once every day
     "tooltip": true,
