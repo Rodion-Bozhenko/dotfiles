@@ -1,2 +1,4 @@
 (include "variables.yuck")
-(include "dashboard/dashboard.yuck")
+(include "control_center/control_center.yuck")
+(include "notifications/notifications_popup.yuck")
+(include "notifications/notifications.yuck")

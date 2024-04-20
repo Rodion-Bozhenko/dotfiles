@@ -312,20 +312,24 @@
   )
 )
 
-(defwidget dashboard []
-  (box :class "dashboardbox"
+(defwidget control_center []
+  (box :class "control_centerbox"
        :orientation "v"
        :space-evenly false
+    (notifications)
     (content)
   )
 )
 
-(defwindow dashboard
+(defwindow control_center
   :geometry (geometry :x "6px"
                       :y "6px"
-                      :width "10px" ; automatically adjusted by eww
-                      :height "10px" ; automatically adjusted by eww
+                      :width "10px"
+                      :height "10px"
                       :anchor "top right")
   :type "dock"
   :wm-ignore false
-(dashboard))
+  (box :orientation "v" :space-evenly false
+    (control_center)
+  )
+)

@@ -1,3 +1,9 @@
+(defvar control_center_opened true)
+(defvar ANIM_DURATION "500ms")
+
+(deflisten notifications :initial '{"count": 0, "notifications": [], "popups": []}'
+"scripts/notifications.sh current")
+
 (defpoll network_status :interval "1s" "~/.config/eww/scripts/network.sh status")
 (defpoll network_icon :interval "1s" "~/.config/eww/scripts/network.sh icon")
 (defpoll network_radio :interval "1s" "~/.config/eww/scripts/network.sh radio-status")

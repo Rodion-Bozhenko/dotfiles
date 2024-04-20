@@ -1,7 +1,7 @@
-.dashboardbox {
+.control_centerbox {
   background-color: $bg;
   color: $fg;
-  border-radius: 10px;
+  border-radius: 1rem;
 }
 
 .headerbox {
@@ -26,10 +26,10 @@
 
 .content-container {
   .contentbox {
-    border-radius: 10px;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
     padding: 25px;
+    border: 0.5rem solid $contrastbg;
 
     .firstcol {
       .usercard {
