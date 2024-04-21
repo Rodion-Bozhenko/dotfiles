@@ -97,8 +97,8 @@ class NotificationDaemon(dbus.service.Object):
         details = {
             "id": id,
             "app": app_name,
-            "summary": self.format_long_string(summary, 55),
-            "body": self.format_long_string(body, 55),
+            "summary": self.format_long_string(summary, 65),
+            "body": self.format_long_string(body, 65),
             "time": datetime.datetime.now().strftime("%H:%M"),
             "urgency": hints.get("urgency", 1),  # Default urgency to 1 if not specified
             "actions": acts
