@@ -66,7 +66,8 @@ class NotificationDaemon(dbus.service.Object):
             if replaces_id != 0:
                 new_id = replaces_id
             else:
-                new_id = current["notifications"][0]["id"] + 1
+                if len(current["notifications"]) > 0:
+                    new_id = current["notifications"][0]["id"] + 1
 
             new_notification_details = self.create_notification_details(
                 id=new_id,
