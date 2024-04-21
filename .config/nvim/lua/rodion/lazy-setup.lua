@@ -147,14 +147,14 @@ require("lazy").setup({
 	-- vs-code like icons for autocompletion
 	{ "onsails/lspkind.nvim", event = { "BufRead", "BufNewFile" } },
 	-- formatting & linting: configure formatters & linters
-	{ "jose-elias-alvarez/null-ls.nvim", event = { "BufReadPre", "BufNewFile" } },
+	{ "nvimtools/none-ls.nvim", event = { "BufReadPre", "BufNewFile" } },
 	-- bridges gap b/w mason & null-ls
 	{
 		"jay-babu/mason-null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"williamboman/mason.nvim",
-			"jose-elias-alvarez/null-ls.nvim",
+			"nvimtools/none-ls.nvim",
 		},
 	},
 	-- treesitter configuration
@@ -218,6 +218,12 @@ require("lazy").setup({
 	-- noice ui
 	{
 		"folke/noice.nvim",
+		config = function()
+			require("notify").setup({
+				timeout = 1500,
+				stages = "static",
+			})
+		end,
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
