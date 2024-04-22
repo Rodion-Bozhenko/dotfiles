@@ -84,7 +84,7 @@ class NotificationDaemon(dbus.service.Object):
         current["count"] = len(current["notifications"])
         self.write_log_file(current)
 
-        if not self.dnd:
+        if not self.dnd and not self.check_control_center_open():
             self.save_popup(current["notifications"][0], replaces_id)
 
         return new_id
@@ -178,7 +178,7 @@ class NotificationDaemon(dbus.service.Object):
     @dbus.service.method("org.freedesktop.Notifications", in_signature="", out_signature="")
     def GetDNDState(self):
         subprocess.run(
-            ["eww", "update", f"do-not-disturb={json.dumps(self.dnd)}"])
+            ["/home/rodion/bin/eww", "update", f"do-not-disturb={json.dumps(self.dnd)}"])
 
     def get_gtk_icon(self, icon_name):
         theme = Gtk.IconTheme.get_default()
@@ -200,7 +200,7 @@ class NotificationDaemon(dbus.service.Object):
 
     def write_log_file(self, data):
         output_json = json.dumps(data, indent=2)
-        subprocess.run(["eww", "update", f"notifications={output_json}"])
+        subprocess.run(["/home/rodion/bin/eww", "update", f"notifications={output_json}"])
         with open(log_file, "w") as log:
             log.write(output_json)
 
@@ -213,6 +213,10 @@ class NotificationDaemon(dbus.service.Object):
             with open(log_file, "w") as log:
                 json.dump(empty, log)
             return empty
+
+    def check_control_center_open(self):
+        result = subprocess.run(["/home/rodion/bin/eww", "get", "control_center_opened"], capture_output=True, text=True)
+        return result.stdout.strip() == "true"    
 
     @dbus.service.method("org.freedesktop.Notifications", in_signature="", out_signature="")
     def ClearAll(self):
@@ -269,7 +273,7 @@ class NotificationDaemon(dbus.service.Object):
     @dbus.service.method("org.freedesktop.Notifications", in_signature="", out_signature="")
     def GetCurrent(self):
         subprocess.run(
-            ["eww", "update", f"notifications={json.dumps(self.read_log_file())}"])
+            ["/home/rodion/bin/eww", "update", f"notifications={json.dumps(self.read_log_file())}"])
 
 
 # MAINLOOP
