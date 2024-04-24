@@ -1,50 +1,64 @@
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+;; mmmmmm  mmmm  mm   mmmmmmmm  mmmm
+;; #      m"  "m #"m  #   #    #"   "
+;; #mmmmm #    # # #m #   #    "#mmm
+;; #      #    # #  # #   #        "#
+;; #       #mm#  #   ##   #    "mmm#"
 
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 18 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "Hack Nerd Font Mono" :size 19))
 
 
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets. It is optional.
-;; (setq user-full-name "John Doe"
-;;       user-mail-address "john@doe.com")
 
-;; Doom exposes five (optional) variables for controlling fonts in Doom:
-;;
-;; - `doom-font' -- the primary font to use
-;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
-;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;; - `doom-symbol-font' -- for symbols
-;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
-;;
-;; See 'C-h v doom-font' for documentation and more examples of what they
-;; accept. For example:
-;;
-(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 16 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Hack Nerd Font Mono" :size 17))
-;;
-;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
-;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
-;; refresh your font settings. If Emacs still can't find your font, it likely
-;; wasn't installed correctly. Font issues are rarely Doom issues!
+;; mmmmmmm m    m mmmmmm m    m mmmmmm  mmmm
+;;    #    #    # #      ##  ## #      #"   "
+;;    #    #mmmm# #mmmmm # ## # #mmmmm "#mmm
+;;    #    #    # #      # "" # #          "#
+;;    #    #    # #mmmmm #    # #mmmmm "mmm#"
 
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-nord)
+(add-to-list 'custom-theme-load-path "~/.doom.d/themes")
 
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
+
+;;  mmmm  mmmmm mmmmmmm mmmmm   mmmm  mm   m  mmmm
+;; m"  "m #   "#   #      #    m"  "m #"m  # #"   "
+;; #    # #mmm#"   #      #    #    # # #m # "#mmm
+;; #    # #        #      #    #    # #  # #     "#
+;;  #mm#  #        #    mm#mm   #mm#  #   ## "mmm#"
+
+(setq display-line-numbers-type 'relative
+      scroll-margin 8)
+
+(defun my/evil-change-advice (orig-fn beg end type register &rest args)
+  "Advice to change text using the black hole register."
+  (apply orig-fn beg end type ?_ args))
+
+(defun my/evil-change-line-advice (orig-fn beg end type register &rest args)
+  "Advice to change entire line text using the black hole register."
+  (apply orig-fn beg end type ?_ args))
+(after! evil
+  (advice-add 'evil-change :around #'my/evil-change-advice)
+  (advice-add 'evil-change-line :around #'my/evil-change-line-advice))
+
+
+
+;;  mmmm  mmmmm    mmm
+;; m"  "m #   "# m"   "
+;; #    # #mmmm" #   mm
+;; #    # #   "m #    #
+;;  #mm#  #    "  "mmm"
+
 (setq org-directory "~/org/")
 
-(setq
- projectile-project-search-path '("~/work/" "~/personal/")
- )
+
+
+;; mmmmm  m      m    m   mmm  mmmmm  mm   m  mmmm
+;; #   "# #      #    # m"   "   #    #"m  # #"   "
+;; #mmm#" #      #    # #   mm   #    # #m # "#mmm
+;; #      #      #    # #    #   #    #  # #     "#
+;; #      #mmmmm "mmmm"  "mmm" mm#mm  #   ## "mmm#"
+
+(setq projectile-project-search-path '("~/work/" "~/personal/"))
 
 (use-package avy
   :commands (avy-goto-char avy-goto-word-1 avy-goto-line)
@@ -54,10 +68,13 @@
    avy-all-windows t
    ))
 
-(map! :leader
-      :desc "Avy go to char" "s c" #'avy-goto-char
-      :desc "Avy go to word" "s w" #'avy-goto-word-1
-      :desc "Avy go to line" "s l" #'avy-goto-line)
+
+
+;; m    m mmmmmmm     m m    m   mm   mmmmm   mmmm
+;; #  m"  #      "m m"  ##  ##   ##   #   "# #"   "
+;; #m#    #mmmmm  "#"   # ## #  #  #  #mmm#" "#mmm
+;; #  #m  #        #    # "" #  #mm#  #          "#
+;; #   "m #mmmmm   #    #    # #    # #      "mmm#"
 
 ;; Map Ctrl+d to scroll down half a page and recenter
 (map! :n "C-d" (lambda () (interactive)
@@ -69,36 +86,67 @@
                  (evil-scroll-up nil)
                  (recenter)))
 
-(add-to-list 'custom-theme-load-path "~/.doom.d/themes")
+;; AVY
+(map! :leader
+      :desc "Avy go to char" "s c" #'avy-goto-char
+      :desc "Avy go to word" "s w" #'avy-goto-word-1
+      :desc "Avy go to line" "s l" #'avy-goto-line)
 
-;; Whenever you reconfigure a package, make sure to wrap your config in an
-;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
-;;
-;;   (after! PACKAGE
-;;     (setq x y))
-;;
-;; The exceptions to this rule:
-;;
-;;   - Setting file/directory variables (like `org-directory')
-;;   - Setting variables which explicitly tell you to set them before their
-;;     package is loaded (see 'C-h v VARIABLE' to look up their documentation).
-;;   - Setting doom variables (which start with 'doom-' or '+').
-;;
-;; Here are some additional functions/macros that will help you configure Doom.
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;; Alternatively, use `C-h o' to look up a symbol (functions, variables, faces,
-;; etc).
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
+
+
+;; m       mmmm  mmmmm
+;; #      #"   " #   "#
+;; #      "#mmm  #mmm#"
+;; #          "# #
+;; #mmmmm "mmm#" #
+
+(use-package lsp-ui)
+
+(defun my/toggle-lsp-ui-doc-focus ()
+  "Toggle lsp-ui-doc and focus if already open."
+  (interactive)
+  (if (lsp-ui-doc--frame-visible-p)
+      (lsp-ui-doc-focus-frame)
+    (lsp-ui-doc-show)))
+
+(after! lsp-ui
+  (setq lsp-ui-doc-enable nil
+        lsp-ui-doc-use-childframe t
+        lsp-ui-doc-position 'at-point
+        lsp-ui-doc-max-width 150
+        lsp-ui-doc-max-height 50
+        lsp-ui-doc-delay 0
+        lsp-ui-doc-show-with-cursor nil
+        lsp-ui-doc-show-with-mouse nil)
+
+  (custom-set-faces
+   '(markdown-code-face ((t (:background nil)))))
+
+  (map! :map general-override-mode-map
+        "K" nil)
+
+  (map! :mode lsp-mode
+        :n "K" #'my/toggle-lsp-ui-doc-focus))
+
+
+
+;; m    m  mmmm  mmmm   mmmmmm m      mmmmm  mm   m mmmmmm
+;; ##  ## m"  "m #   "m #      #        #    #"m  # #
+;; # ## # #    # #    # #mmmmm #        #    # #m # #mmmmm
+;; # "" # #    # #    # #      #        #    #  # # #
+;; #    #  #mm#  #mmm"  #mmmmm #mmmmm mm#mm  #   ## #mmmmm
+
+(setq doom-modeline-column-zero-based t
+      doom-modeline-position-column-line-format '("%l:%c")
+      doom-modeline-enable-word-count nil
+      doom-modeline-lsp t
+      doom-modeline-always-show-macro-register nil
+      doom-modeline-env-version t
+      doom-modeline-height 60
+      doom-modeline-percent-position '(-3 "%p")
+      doom-modeline-time-live-icon t)
+
+(custom-set-faces
+ '(mode-line ((t (:family "Nerd Font Mono" :height 160))))
+ '(mode-line-active ((t (:family "Nerd Font Mono" :height 160))))
+ '(mode-line-inactive ((t (:family "Nerd Font Mono" :height 160)))))
