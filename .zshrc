@@ -5,7 +5,7 @@ fi
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.config/emacs/bin:$HOME/.local/share/nvim/mason/bin:$PATH
 
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -19,12 +19,6 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# The next line updates PATH for the Google Cloud SDK.
-#if [ -f '/Users/rodionbozenko/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rodionbozenko/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-#if [ -f '/Users/rodionbozenko/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/rodionbozenko/google-cloud-sdk/completion.zsh.inc'; fi
 
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
@@ -46,7 +40,7 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 alias v="nvim"
 alias vf=". ~/bin/vim-fzf"
 alias s="~/bin/zellij-sessionizer"
-alias lf="~/.config/lf/lfrun"
+# alias lf="~/.config/lf/lfrun"
 alias cat="bat"
 alias ls="exa"
 alias zel="zellij"
