@@ -1,15 +1,16 @@
-
 (defwidget notification [notify]
     (box :orientation "v" :space-evenly false :hexpand true
         (box :orientation "h" :space-evenly false :hexpand true :class "notification-info"
             (image :valign "start" :class "notification-image" :visible {notify.image != "null" ? true :false} :path {notify.image} :image-width 60 :image-height 60)
             (box :orientation "v" :space-evenly false :hexpand true
-                (box :orientation "h" :space-evenly false
-                    (label :halign "start" :class "notification-app" :visible {notify.app != "null" ? true :false} :text {notify.app})
-                    (button :hexpand true :halign "end" :class "notification-close" :onclick "scripts/notifications.sh close ${notify.id}" "󰅖")
-                )
                 (label :halign "start" :class "notification-summary" :visible {notify.summary != "null" ? true :false} :wrap true :markup {notify.summary})
                 (label :halign "start" :class "notification-body" :visible {notify.body != "null" ? true :false} :wrap true :markup {notify.body})
+            )
+            (box :orientation "v" :space-evenly false :hexpand true
+                ;; (box :orientation "h" :space-evenly false
+                    ;; (label :halign "start" :class "notification-app" :visible {notify.app != "null" ? true :false} :text {notify.app})
+                (button :hexpand true :halign "end" :class "notification-close" :onclick "scripts/notifications.sh close ${notify.id}" "󰅖")
+                ;; )
             )
         )
         (box :orientation "h" :space-evenly false :class "notification-action-box"
