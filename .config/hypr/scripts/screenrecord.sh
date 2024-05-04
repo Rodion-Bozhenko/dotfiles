@@ -1,13 +1,20 @@
 #!/bin/env bash
 
-VID="${HOME}/Videos/$(date +%Y-%m-%d_%H-%m-%s).mp4"
+VID="${HOME}/Videos/Screencast/$(date +%Y-%m-%d_%H-%m-%s).mp4"
+THUMB="${HOME}/Videos/Screencast/thumb.png"
 
 wf-recorder_check() {
 	if pgrep -x "wf-recorder" > /dev/null; then
-			pkill -INT -x wf-recorder
-      notify-send "Finish recording"
-      wl-copy < "$(cat /tmp/recording.txt)"
-			exit 0
+        notify-send "CHECK"
+        pkill -INT -x wf-recorder
+        vid="$(cat /tmp/recording.txt)"
+        ffmpeg -i "$vid" -ss 00:00:01 -vframes 1 "$THUMB" 2> "${HOME}/ffmpeg_errors.log"
+        sleep 1
+        notify-send "$vid"
+        notify-send "Finish recording" -i "$THUMB"
+        rm "$THUMB"
+        wl-copy "$vid"
+        exit 0
 	fi
 }
 
