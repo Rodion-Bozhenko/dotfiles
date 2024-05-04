@@ -129,6 +129,10 @@
         :n "K" #'my/toggle-lsp-ui-doc-focus))
 
 
+(setq lsp-log-io nil) ; if set to true can cause a performance hit
+
+(setq lsp-inlay-hint-enable t)
+
 
 ;; m    m  mmmm  mmmm   mmmmmm m      mmmmm  mm   m mmmmmm
 ;; ##  ## m"  "m #   "m #      #        #    #"m  # #
@@ -144,9 +148,25 @@
       doom-modeline-env-version t
       doom-modeline-height 60
       doom-modeline-percent-position '(-3 "%p")
+      doom-modeline-lsp-icon t
       doom-modeline-time-live-icon t)
 
 (custom-set-faces
  '(mode-line ((t (:family "Nerd Font Mono" :height 160))))
  '(mode-line-active ((t (:family "Nerd Font Mono" :height 160))))
  '(mode-line-inactive ((t (:family "Nerd Font Mono" :height 160)))))
+
+
+
+;;  mmmm  mmmmm    mmm  m    m  mmmm  mmmm   mmmmmm
+;; m"  "m #   "# m"   " ##  ## m"  "m #   "m #
+;; #    # #mmmm" #   mm # ## # #    # #    # #mmmmm
+;; #    # #   "m #    # # "" # #    # #    # #
+;;  #mm#  #    "  "mmm" #    #  #mm#  #mmm"  #mmmmm
+
+(use-package org-bullets
+  :after org
+  :hook (org-mode . org-bullets-mode)
+  :custom
+  (org-bullets-bullet-list '("◉" "●" "○" "◆" "●" "○" "◆")))
+
