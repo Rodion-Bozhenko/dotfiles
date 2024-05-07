@@ -56,6 +56,7 @@ alias ct="cargo test"
 alias gr="go run"
 alias gb="go build"
 alias gt="go test"
+alias diff="delta -s"
 
 # bun completions
 [ -s "/Users/rodionbozenko/.bun/_bun" ] && source "/Users/rodionbozenko/.bun/_bun"
