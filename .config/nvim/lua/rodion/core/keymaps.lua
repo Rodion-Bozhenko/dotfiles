@@ -46,7 +46,7 @@ keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- netrw
-keymap.set("n", "<leader>e", ":E<CR>")
+keymap.set("n", "<leader>e", ":Explore<CR>")
 
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>") -- increment
