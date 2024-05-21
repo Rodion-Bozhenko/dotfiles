@@ -13,7 +13,7 @@ export EDITOR=nvim
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-plugins=(git sudo zsh-autosuggestions zsh-syntax-highlighting zsh-vi-mode)
+plugins=(git sudo zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -62,5 +62,7 @@ alias diff="delta -s"
 [ -s "/Users/rodionbozenko/.bun/_bun" ] && source "/Users/rodionbozenko/.bun/_bun"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(fzf --zsh)"
 
 eval "$(zoxide init zsh)"
