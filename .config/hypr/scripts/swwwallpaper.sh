@@ -132,10 +132,10 @@ done
 
 # check swww daemon and set wall
 
-swww query
+swww query &> /dev/null
 if [ $? -ne 0 ] ; then
-[ -e $XDG_RUNTIME_DIR/swww.socket ] && rm  $XDG_RUNTIME_DIR/swww.socket
-    swww-daemon --format xrgb &
+  swww-daemon --format xrgb &
+  swww query && swww restore
 fi
 
 Wall_Set

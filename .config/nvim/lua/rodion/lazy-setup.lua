@@ -49,14 +49,6 @@ require("lazy").setup({
 		end,
 		keys = { "<C-w>h", "<C-w>l", "<C-w>j", "<C-w>k" },
 	},
-	-- commenting with gc
-	{
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup({})
-		end,
-		keys = { "gc", "gcc" },
-	},
 	-- statusline
 	"nvim-lualine/lualine.nvim",
 	-- fuzzy finding w/ telescope: dependency for better sorting performance
