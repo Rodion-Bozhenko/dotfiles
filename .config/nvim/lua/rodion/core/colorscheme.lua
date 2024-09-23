@@ -47,4 +47,5 @@ vim.cmd([[
   hi LspSagaRenameBorder ctermbg=NONE ctermfg=NONE guifg=NONE
   hi LspSagaDefPreviewBorder ctermbg=NONE ctermfg=NONE guifg=NONE
   hi LspSagaLspFinderBorder ctermbg=NONE ctermfg=NONE guifg=NONE
+  hi LspInlayHint guibg=NONE
 ]])

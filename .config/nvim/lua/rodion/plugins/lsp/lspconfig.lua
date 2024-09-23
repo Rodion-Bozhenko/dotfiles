@@ -30,6 +30,14 @@ local on_attach = function(client, bufnr)
 	keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
 	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
 	keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
+	if client.supports_method("textDocument/inlayHint") or client.server_capabilities.inlayHintProvider then
+		keymap.set(
+			"n",
+			"<leader>h",
+			"<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({bufnr = vim.api.nvim_get_current_buf()}), { bufnr = vim.api.nvim_get_current_buf() })<CR>",
+			opts
+		)
+	end
 end
 
 -- used to enable autocompletion (assign to every lsp server config)
@@ -60,6 +68,19 @@ lspconfig["dockerls"].setup({
 })
 
 lspconfig["gopls"].setup({
+	settings = {
+		gopls = {
+			hints = {
+				rangeVariableTypes = true,
+				parameterNames = true,
+				constantValues = true,
+				assignVariableTypes = true,
+				compositeLiteralFields = true,
+				compositeLiteralTypes = true,
+				functionTypeParameters = true,
+			},
+		},
+	},
 	capabilities = capabilities,
 	on_attach = on_attach,
 })

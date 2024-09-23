@@ -210,6 +210,8 @@ require("lazy").setup({
 	-- noice ui
 	{
 		"folke/noice.nvim",
+		enabled = true,
+		commit = "d9328ef903168b6f52385a751eb384ae7e906c6f",
 		config = function()
 			require("notify").setup({
 				timeout = 1500,
@@ -287,5 +289,24 @@ require("lazy").setup({
 
 			"nvim-tree/nvim-web-devicons",
 		},
+		"chrisgrieser/nvim-lsp-endhints",
+		event = "LspAttach",
+		opts = {}, -- required, even if empty
+		config = function()
+			require("lsp-endhints").setup({
+				icons = {
+					type = "=> ",
+					parameter = "<- ",
+					offspec = "", -- hint kind not defined in official LSP spec
+					unknown = "", -- hint kind is nil
+				},
+				label = {
+					padding = 1,
+					marginLeft = 0,
+					bracketedParameters = true,
+				},
+				autoEnableHints = true,
+			})
+		end,
 	},
 })
