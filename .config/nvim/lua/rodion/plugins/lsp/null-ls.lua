@@ -16,7 +16,7 @@ null_ls.setup({
 		formatting.gofmt, -- go formatter
 		formatting.goimports, -- go formatter
 		formatting.clang_format, -- cpp formatter
-		formatting.autopep8, -- python formatter
+		-- formatting.autopep8, -- python formatter
 		diagnostics.hadolint,
 		-- diagnostics.eslint_d.with({ -- js/ts linter
 		-- 	condition = function(utils)

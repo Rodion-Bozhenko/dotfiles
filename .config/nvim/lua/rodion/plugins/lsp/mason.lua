@@ -48,7 +48,7 @@ mason_null_ls.setup({
 		"revive", -- go linter
 		"hadolint", -- dockerfile linter
 		"clang-format", -- cpp formatter
-		"autopep8", -- python formatter
+		-- "autopep8", -- python formatter
 	},
 	automatic_installation = true,
 })
