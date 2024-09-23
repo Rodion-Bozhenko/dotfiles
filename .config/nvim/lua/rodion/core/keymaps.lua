@@ -173,3 +173,6 @@ end)
 vim.keymap.set("n", "gR", function()
 	require("trouble").toggle("lsp_references")
 end)
+
+-- lsp lines
+vim.keymap.set("", "<leader>l", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
