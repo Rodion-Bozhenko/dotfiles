@@ -103,7 +103,16 @@ lspconfig["pyright"].setup({
 	on_attach = on_attach,
 })
 
-local rt = require("rust-tools")
+lspconfig["ocamllsp"].setup({
+	settings = {
+		ocaml = {
+			inlayHints = { enable = true },
+			codelens = { enable = true },
+		},
+	},
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
 
 vim.g.rustaceanvim = {
 	tools = {

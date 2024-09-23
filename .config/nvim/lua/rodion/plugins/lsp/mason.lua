@@ -1,18 +1,20 @@
--- import mason plugin safely
 local mason_status, mason = pcall(require, "mason")
 if not mason_status then
 	return
 end
 
--- import mason-lspconfig plugin safely
 local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not mason_lspconfig_status then
 	return
 end
 
--- import mason-null-ls plugin safely
 local mason_null_ls_status, mason_null_ls = pcall(require, "mason-null-ls")
 if not mason_null_ls_status then
+	return
+end
+
+local null_ls_status, null_ls = pcall(require, "null-ls")
+if not null_ls_status then
 	return
 end
 
@@ -35,6 +37,7 @@ mason_lspconfig.setup({
 		"rust_analyzer",
 		"sqls",
 		"bashls",
+		"ocamllsp",
 	},
 	automatic_installation = true, -- not the same as ensure_installed
 })
@@ -49,6 +52,21 @@ mason_null_ls.setup({
 		"hadolint", -- dockerfile linter
 		"clang-format", -- cpp formatter
 		-- "autopep8", -- python formatter
+		"ocamlformat", -- ocaml formatter
 	},
 	automatic_installation = true,
+	handlers = {
+		-- Hint: see https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTIN_CONFIG.md
+		--       to see what sources are available
+		-- Hint: see https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTIN_CONFIG.md
+		--       to check what we can configure for each source
+		ocamlformat = function(source_name, methods)
+			null_ls.register(null_ls.builtins.formatting.ocamlformat.with({
+				-- Add more arguments to a source's defaults
+				-- Default: { "--enable-outside-detected-project", "--name", "$FILENAME", "-" }
+				-- Type `ocamlformat --help` in your terminal to check more args
+				extra_args = { "--if-then-else", "vertical" },
+			}))
+		end,
+	},
 })
