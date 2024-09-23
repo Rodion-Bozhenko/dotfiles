@@ -289,6 +289,16 @@ require("lazy").setup({
 
 			"nvim-tree/nvim-web-devicons",
 		},
+		config = function()
+			require("markview").setup({
+				code_blocks = {
+					style = "language",
+					hl = "CursorLine",
+				},
+			})
+		end,
+	},
+	{
 		"chrisgrieser/nvim-lsp-endhints",
 		event = "LspAttach",
 		opts = {}, -- required, even if empty
