@@ -328,4 +328,5 @@ require("lazy").setup({
 			require("lsp_lines").setup()
 		end,
 	},
+	{ "folke/twilight.nvim", keys = "<leader>t" },
 })

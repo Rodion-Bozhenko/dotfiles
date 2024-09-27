@@ -176,3 +176,6 @@ end)
 
 -- lsp lines
 vim.keymap.set("", "<leader>l", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
+
+-- dim inactive portions of the code
+vim.keymap.set("n", "<leader>t", "<cmd>Twilight<cr>")
