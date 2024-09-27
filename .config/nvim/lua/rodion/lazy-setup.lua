@@ -329,4 +329,21 @@ require("lazy").setup({
 		end,
 	},
 	{ "folke/twilight.nvim", keys = "<leader>t" },
+	{
+		"kawre/leetcode.nvim",
+		build = ":TSUpdate html",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+			"nvim-lua/plenary.nvim", -- required by telescope
+			"MunifTanjim/nui.nvim",
+
+			-- optional
+			"nvim-treesitter/nvim-treesitter",
+			"rcarriga/nvim-notify",
+			"nvim-tree/nvim-web-devicons",
+			"tree-sitter/tree-sitter-html",
+		},
+		lazy = "leetcode.nvim" ~= vim.fn.argv()[1],
+		opts = { lang = "golang" },
+	},
 })
