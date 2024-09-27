@@ -120,6 +120,13 @@ keybinds {
             };
             SwitchToMode "Normal"
         }
+        bind "m" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij-choose-tree.wasm" {
+                floating true
+                move_to_focused_tab true
+            };
+            SwitchToMode "Normal"
+        }
     }
     tmux {
         bind "[" { SwitchToMode "Scroll"; }
@@ -184,11 +191,15 @@ keybinds {
 }
 
 plugins {
-    tab-bar { path "tab-bar"; }
-    status-bar { path "status-bar"; }
-    strider { path "strider"; }
-    compact-bar { path "compact-bar"; }
-    session-manager { path "session-manager"; }
+    tab-bar location="zellij::tab-bar"
+    status-bar location="zellij::status-bar"
+    strider location="zellij::strider"
+    compact-bar location="zellij::compact-bar"
+    session-manager location="zellij::session-manager"
+}
+
+load_plugins {
+    "file:~/.config/zellij/plugins/zellij-choose-tree.wasm"
 }
 
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP
