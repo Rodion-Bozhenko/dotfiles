@@ -194,7 +194,7 @@ plugins {
     tab-bar location="zellij::tab-bar"
     status-bar location="zellij::status-bar"
     strider location="zellij::strider"
-    compact-bar location="zellij::compact-bar"
+    //compact-bar location="zellij::compact-bar"
     session-manager location="zellij::session-manager"
 }
 
