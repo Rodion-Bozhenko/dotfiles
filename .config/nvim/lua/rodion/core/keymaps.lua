@@ -162,8 +162,5 @@ vim.keymap.set("n", "<leader>xq", "<cmd>Trouble qflist toggle<cr>")
 vim.keymap.set("n", "<leader>xl", "<cmd>Trouble loclist toggle<cr>")
 vim.keymap.set("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>")
 
--- lsp lines
-vim.keymap.set("", "<leader>l", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
-
 -- dim inactive portions of the code
 vim.keymap.set("n", "<leader>t", "<cmd>Twilight<cr>")
