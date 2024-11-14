@@ -112,6 +112,16 @@ lspconfig["sqls"].setup({
 	on_attach = function(client, bufnr)
 		require("sqls").on_attach(client, bufnr)
 	end,
+	settings = {
+		sqls = {
+			connections = {
+				{
+					driver = "postgresql",
+					dataSourceName = "host=localhost port=5432 user=username password=password dbname=test sslmode=disable",
+				},
+			},
+		},
+	},
 })
 
 lspconfig["bashls"].setup({
@@ -125,11 +135,14 @@ lspconfig["pyright"].setup({
 })
 
 lspconfig["ocamllsp"].setup({
-	settings = {
-		ocaml = {
-			inlayHints = { enable = true },
-			codelens = { enable = true },
-		},
+	-- settings = {
+	-- 	codelens = { enable = true },
+	-- 	inlayHints = { enable = true },
+	-- 	syntaxDocumentation = { enable = true },
+	-- },
+	setting = {
+		hintPatternVariables = { enable = true },
+		hintLetBindings = { enable = true },
 	},
 	on_attach = on_attach,
 	capabilities = capabilities,
