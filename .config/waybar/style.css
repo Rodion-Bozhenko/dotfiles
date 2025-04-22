@@ -2,18 +2,15 @@
   font-family: "JetBrainsMono Nerd Font";
   font-weight: bold;
   font-size: 14px;
-  min-height: 14px;
 }
 
 @import "theme.css";
 
 window#waybar {
   background: @bar-bg;
-  border-radius: 10px;
 }
 
 #custom-wf-recorder {
-  /* padding: 0 20px; */
   color: #eb6f92;
 }
 
@@ -27,23 +24,28 @@ tooltip {
 #workspaces button {
   box-shadow: none;
   text-shadow: none;
-  padding: 0px 11px 0px 7px;
-  border-radius: 12px;
-  margin: 0px 2px;
+  border-radius: 10px;
+  margin: 0px;
   color: @main-fg;
+  padding: 0px 10px;
 }
 
 #workspaces button.active {
   background: @wb-act-bg;
-  color: @wb-act-fg;
+  color: @wb-hvr-fg;
   border: none;
-  padding: 0px 12px 0px 8px;
+  padding: 0px 10px;
+  margin: 0px;
 }
 
 #workspaces button:hover {
+  color: @wb-hvr-fg;
+  border: none;
+}
+
+#workspaces button.active:hover {
   background: @wb-hvr-bg;
   color: @wb-hvr-fg;
-  padding: 0px 12px 0px 8px;
   border: none;
 }
 
@@ -52,8 +54,6 @@ tooltip {
   text-shadow: none;
   padding: 0px;
   border-radius: 9px;
-  margin-top: 3px;
-  margin-bottom: 3px;
   margin-left: 0px;
   padding-left: 3px;
   padding-right: 3px;
@@ -75,11 +75,16 @@ tooltip {
   color: @wb-hvr-color;
 }
 
+#clock {
+  border-radius: 10px;
+  padding: 0px 14px;
+  margin: 4px 2px;
+}
+
 #backlight,
 #battery,
 #bluetooth,
 #custom-cliphist,
-#clock,
 #custom-cpuinfo,
 #cpu,
 #custom-dashboard,
@@ -118,15 +123,13 @@ tooltip {
 }
 
 #language {
-  font-size: 17px;
-  font-weight: 500;
   padding: 0px;
-  margin-bottom: 7px;
+  margin-bottom: 0px;
 }
 
 #custom-power {
-  font-size: 18px;
-  padding: 0px 7px 0px 12px;
+  padding: 0px 10px 0px 12px;
+  margin: 4px 0px;
   border-radius: 10px;
   background: @wb-act-bg;
   color: @wb-act-fg;

@@ -250,12 +250,12 @@ themes {
     bg "#1f1d2e"
     black "#191724"
     red "#ebbcba"
-    green "#31748f"
+    green "#c4a7e7"
     yellow "#f6c177"
     blue "#9ccfd8"
     magenta "#c4a7e7"
     cyan "#5fb4d9"
-    white "#524f67"
+    white "#9ccfd8"
     orange "#eb6f92"
   }
 }

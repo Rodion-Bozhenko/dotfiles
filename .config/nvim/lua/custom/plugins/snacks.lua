@@ -1,3 +1,20 @@
+local exclude = {
+  "yarn.lock",
+  "package-lock.json",
+  "node_modules/*",
+  ".terraform/*",
+  "*.log",
+  "dist/*",
+  "build/*",
+  "debug",
+  "release",
+  "Cargo.lock",
+  ".git/",
+  "venv",
+  ".idea",
+  ".next",
+}
+
 return {
   {
     "folke/snacks.nvim",
@@ -31,9 +48,19 @@ return {
       }
     },
     keys = {
-      { "<leader>fs", function() Snacks.picker.smart() end,           desc = "Smart Find Files" },
-      { "<leader>fb", function() Snacks.picker.buffers() end,         desc = "Buffers" },
-      { "<leader>fg", function() Snacks.picker.grep() end,            desc = "Grep" },
+      { "<leader>fs", function() Snacks.picker.smart() end,   desc = "Smart Find Files" },
+      { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+      {
+        "<leader>fg",
+        function()
+          Snacks.picker.grep({
+            hidden = true,
+            ignored = true,
+            exclude = exclude
+          })
+        end,
+        desc = "Grep"
+      },
       { "<leader>:",  function() Snacks.picker.command_history() end, desc = "Command History" },
       { "<leader>n",  function() Snacks.picker.notifications() end,   desc = "Notification History" },
       { "<leader>fe", function() Snacks.explorer() end,               desc = "File Explorer" },
@@ -53,22 +80,7 @@ return {
           Snacks.picker.files({
             hidden = true,
             ignored = true,
-            exclude = {
-              "yarn.lock",
-              "package-lock.json",
-              "node_modules/*",
-              ".terraform/*",
-              "*.log",
-              "dist/*",
-              "build/*",
-              "debug",
-              "release",
-              "Cargo.lock",
-              ".git/",
-              "venv",
-              ".idea",
-              ".next",
-            }
+            exclude = exclude
           })
         end,
         desc = "Find Files"

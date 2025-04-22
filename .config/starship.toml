@@ -1,0 +1,127 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$c\
+$elixir\
+$ocaml\
+$zig\
+$golang\
+$lua\
+$nodejs\
+$rust\
+$python\n \
+$character \
+"""
+
+add_newline = false
+
+palette = 'rose-pine'
+
+[palettes.rose-pine]
+overlay = '#26233a'
+love = '#eb6f92'
+gold = '#f6c177'
+rose = '#ebbcba'
+pine = '#31748f'
+foam = '#9ccfd8'
+iris = '#c4a7e7'
+text = '#575279'
+
+[character]
+success_symbol = '[](bold fg:pine)'
+error_symbol = '[](bold fg:love)'
+
+[directory]
+format = '[ $path ]($style)'
+style = 'bg:overlay fg:iris'
+home_symbol = ' '
+
+[directory.substitutions]
+Documents = '󰈙'
+Downloads = ' '
+Music = ' '
+Pictures = ' '
+
+[fill]
+style = 'fg:overlay'
+symbol = ' '
+
+[git_branch]
+format = '[│](fg:text bg:overlay)[ $symbol $branch ]($style)'
+style = 'bg:overlay fg:foam'
+symbol = ''
+
+[git_status]
+disabled = false
+style = 'bg:overlay fg:love'
+format = '[│](fg:text bg:overlay)([$all_status$ahead_behind]($style))'
+up_to_date = '[ ✓ ](bg:overlay fg:iris)'
+untracked = '[?\($count\)](bg:overlay fg:foam)'
+stashed = '[\$](bg:overlay fg:iris)'
+modified = '[!\($count\)](bg:overlay fg:foam)'
+renamed = '[»\($count\)](bg:overlay fg:iris)'
+deleted = '[✘\($count\)](style)'
+staged = '[++\($count\)](bg:overlay fg:foam)'
+ahead = '[⇡\(${count}\)](bg:overlay fg:foam)'
+diverged = '⇕[\[](bg:overlay fg:iris)[⇡\(${ahead_count}\)](bg:overlay fg:foam)[⇣\(${behind_count}\)](bg:overlay fg:rose)[\]](bg:overlay fg:iris)'
+behind = '[⇣\(${count}\)](bg:overlay fg:rose)'
+
+# Languages
+
+[c]
+style = 'bg:overlay fg:gold'
+format = '[ $symbol$version ]($style)'
+disabled = false
+symbol = ' '
+
+[ocaml]
+style = 'bg:overlay fg:rose'
+format = '[ $symbol$version ]($style)'
+disabled = false
+symbol = ' '
+
+[elixir]
+style = 'bg:overlay fg:iris'
+format = '[ $symbol$version ]($style)'
+disabled = false
+symbol = ' '
+
+[golang]
+style = 'bg:overlay fg:foam'
+format = '[ $symbol$version ]($style)'
+disabled = false
+symbol = ' '
+
+[lua]
+style = 'bg:overlay fg:foam'
+format = '[ $symbol$version ]($style)'
+disabled = false
+symbol = ' '
+
+[nodejs]
+style = 'bg:overlay fg:pine'
+format = '[ $symbol$version ]($style)'
+disabled = false
+symbol = ' '
+
+[rust]
+style = 'bg:overlay fg:rose'
+format = '[ $symbol$version ]($style)'
+disabled = false
+symbol = ' '
+
+[zig]
+style = 'bg:overlay fg:#ea9d34'
+format = '[ $symbol$version ]($style)'
+disabled = false
+symbol = ' '
+
+[python]
+style = 'bg:overlay fg:gold'
+format = '[ $symbol$version ]($style)'
+disabled = false
+symbol = ' '
