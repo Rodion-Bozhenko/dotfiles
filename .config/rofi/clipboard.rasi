@@ -42,7 +42,6 @@ entry {
     padding:                     3em;
     text-color:                  @main-fg;
     background-color:            transparent;
-    background-image:            url("~/.config/swww/wall.blur", width);
 }
 
 
