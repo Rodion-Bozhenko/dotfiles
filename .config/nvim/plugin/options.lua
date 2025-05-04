@@ -31,6 +31,8 @@ opt.guicursor = ""
 
 vim.g.netrw_banner = 0
 
+vim.g.go_fmt_command = "goimports"
+
 -- Set completeopt to have a better completion experience
 -- :help completeopt
 -- menuone: popup even when there's only one match
