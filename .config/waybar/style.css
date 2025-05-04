@@ -132,7 +132,7 @@ tooltip {
   margin: 4px 0px;
   border-radius: 10px;
   background: @wb-act-bg;
-  color: @wb-act-fg;
+  color: @wb-hvr-fg;
 }
 
 #custom-power:hover {
