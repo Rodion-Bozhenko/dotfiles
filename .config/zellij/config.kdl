@@ -255,7 +255,7 @@ themes {
     blue "#9ccfd8"
     magenta "#c4a7e7"
     cyan "#5fb4d9"
-    white "#9ccfd8"
+    white "#fffaf3"
     orange "#eb6f92"
   }
 }
