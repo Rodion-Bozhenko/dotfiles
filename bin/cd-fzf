@@ -1,0 +1,8 @@
+#!/bin/bash
+
+dir=$(fd . ~ -t d -E '{.Trash,Applications,Library,System,private,Volumes,dev,cores,sbin,node_modules}' | fzf --reverse --query "$*")
+
+if [ -n "$dir" ]; then 
+  cd "$dir"
+  clear
+fi

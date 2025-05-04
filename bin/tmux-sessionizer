@@ -1,0 +1,12 @@
+#!/bin/bash
+
+path=$(zoxide query -l | fzf --reverse --query "$*")
+session=$(echo "$path" | sed 's|.*/||' | awk '{print tolower($0)}')
+
+# Check if session exists
+if tmux has-session -t "$session" 2>/dev/null; then
+  tmux attach -t "$session"
+else
+  cd "$path" || exit
+  tmux new-session -s "$session"
+fi

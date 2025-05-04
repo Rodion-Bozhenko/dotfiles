@@ -1,0 +1,13 @@
+#!/bin/bash
+
+path=$(zoxide query -l | fzf --reverse --query "$*" )
+session=$(echo "$path" | sed 's|.*/||' | awk '{print tolower($0)}')
+
+sessions=$(zellij ls -sn)
+
+if printf "%s\n" "${sessions}" | grep -qs "^$session$"; then
+  zellij a "$session"
+else
+  cd "$path" 
+  zellij -s "$session"
+fi

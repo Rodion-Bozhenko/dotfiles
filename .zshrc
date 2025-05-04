@@ -26,6 +26,7 @@ export HF_HUB_OFFLINE=1
 alias v="nvim"
 alias vf=". ~/bin/vim-fzf"
 alias s="~/bin/zellij-sessionizer"
+alias t="~/bin/tmux-sessionizer"
 # alias lf="~/.config/lf/lfrun"
 alias cat="bat"
 alias ls="exa"

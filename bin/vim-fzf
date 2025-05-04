@@ -1,0 +1,10 @@
+#!/bin/bash
+
+file=$(rg --files --hidden --glob '!{.Trash,Applications,Library,System,private,Volumes,dev,cores,sbin,node_modules}' | fzf --reverse --preview='bat --color=always {}' --query "$*")
+
+if [ -n "$file" ]; then 
+  fullpath=$(realpath "$file")
+  dir=$(echo "$fullpath" | xargs dirname)
+  cd "$dir"
+  nvim "$fullpath"
+fi
