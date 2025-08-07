@@ -1,9 +1,11 @@
 {
   "blink.cmp": { "branch": "main", "commit": "44a5a31ea37906ddb4166e4c9a4fe741edd4de3d" },
+  "checkmate.nvim": { "branch": "main", "commit": "1b7aa6a9db3580cf4bc22be6654e340b05cbc787" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "friendly-snippets": { "branch": "main", "commit": "31f2a2657b6261724313281fe0d8ba6f43f4a4fa" },
   "gitsigns.nvim": { "branch": "main", "commit": "17ab794b6fce6fce768430ebc925347e349e1d60" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
+  "lspsaga.nvim": { "branch": "main", "commit": "920b1253e1a26732e53fac78412f6da7f674671d" },
   "markview.nvim": { "branch": "main", "commit": "4f9ad36efe01c283aa886453ba75bf569c897c84" },
   "mini.icons": { "branch": "main", "commit": "397ed3807e96b59709ef3292f0a3e253d5c1dc0a" },
   "mini.nvim": { "branch": "main", "commit": "a8b1d74f45dadf3554c0eed784c6ccd8ade67883" },
@@ -25,5 +27,6 @@
   "rustaceanvim": { "branch": "master", "commit": "e9c5aaba16fead831379d5f44617547a90b913c7" },
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
   "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
+  "trouble.nvim": { "branch": "main", "commit": "85bedb7eb7fa331a2ccbecb9202d8abba64d37b3" },
   "undotree": { "branch": "master", "commit": "b951b87b46c34356d44aa71886aecf9dd7f5788a" }
 }
