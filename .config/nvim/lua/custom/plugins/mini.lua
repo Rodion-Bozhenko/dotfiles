@@ -40,9 +40,6 @@ return {
         },
         use_icons = true,
       })
-
-      -- mini.pairs
-      require("mini.pairs").setup()
     end,
   },
 }
