@@ -1,0 +1,394 @@
+// ███████ ████████  █████  ██████  ████████ ██    ██ ██████  
+// ██         ██    ██   ██ ██   ██    ██    ██    ██ ██   ██ 
+// ███████    ██    ███████ ██████     ██    ██    ██ ██████  
+//      ██    ██    ██   ██ ██   ██    ██    ██    ██ ██      
+// ███████    ██    ██   ██ ██   ██    ██     ██████  ██      
+                                                           
+spawn-at-startup "waybar"
+spawn-at-startup "xwayland-satellite"
+spawn-at-startup "blueman-applet"
+spawn-at-startup "nm-applet"
+spawn-at-startup "gammastep"
+spawn-at-startup "fcitx5"
+spawn-at-startup "swww-daemon"
+spawn-at-startup "swww img ~/Pictures/cyberpunk-2077-2.jpg"
+spawn-at-startup "opensnitch-ui"
+spawn-at-startup "gnome-keyring-daemon --start --components=secrets,ssh"
+spawn-at-startup "dunst"
+
+// ███████ ███    ██ ██    ██ 
+// ██      ████   ██ ██    ██ 
+// █████   ██ ██  ██ ██    ██ 
+// ██      ██  ██ ██  ██  ██  
+// ███████ ██   ████   ████   
+                           
+environment {
+  DISPLAY ":0"
+  XDG_CURRENT_DESKTOP "niri"
+  XDG_SESSION_TYPE "wayland"
+  XDG_SESSION_DESKTOP "niri"
+  QT_QPA_PLATFORM "wayland"
+  QT_STYLE_OVERRIDE "kvantum"
+  QT_QPA_PLATFORMTHEME "qt5ct"
+  QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+  QT_AUTO_SCREEN_SCALE_FACTOR "1"
+  MOZ_ENABLE_WAYLAND "1"
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
+  XDG_MENU_PREFIX "arch-"
+}
+
+//  ██████  ███████ ███    ██ ███████ ██████   █████  ██      
+// ██       ██      ████   ██ ██      ██   ██ ██   ██ ██      
+// ██   ███ █████   ██ ██  ██ █████   ██████  ███████ ██      
+// ██    ██ ██      ██  ██ ██ ██      ██   ██ ██   ██ ██      
+//  ██████  ███████ ██   ████ ███████ ██   ██ ██   ██ ███████ 
+                                                           
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+hotkey-overlay {
+  skip-at-startup
+}
+
+// ██ ███    ██ ██████  ██    ██ ████████ 
+// ██ ████   ██ ██   ██ ██    ██    ██    
+// ██ ██ ██  ██ ██████  ██    ██    ██    
+// ██ ██  ██ ██ ██      ██    ██    ██    
+// ██ ██   ████ ██       ██████     ██    
+                                       
+input {
+  keyboard {
+    xkb {
+        layout "us,ru"
+        variant "colemak_dh_ortho,"
+    }
+  }
+
+  touchpad {
+    tap
+    natural-scroll
+  }
+
+  mouse {
+    natural-scroll
+    accel-profile "flat"
+  }
+
+  warp-mouse-to-focus
+
+  focus-follows-mouse max-scroll-amount="90%"
+}
+
+//  ██████  ██    ██ ████████ ██████  ██    ██ ████████ 
+// ██    ██ ██    ██    ██    ██   ██ ██    ██    ██    
+// ██    ██ ██    ██    ██    ██████  ██    ██    ██    
+// ██    ██ ██    ██    ██    ██      ██    ██    ██    
+//  ██████   ██████     ██    ██       ██████     ██    
+                                                     
+output "eDP-1" {
+  variable-refresh-rate
+  mode "2560x1600@240.003"
+  scale 1.5
+}
+
+// ██       █████  ██    ██  ██████  ██    ██ ████████ 
+// ██      ██   ██  ██  ██  ██    ██ ██    ██    ██    
+// ██      ███████   ████   ██    ██ ██    ██    ██    
+// ██      ██   ██    ██    ██    ██ ██    ██    ██    
+// ███████ ██   ██    ██     ██████   ██████     ██    
+                                                    
+layout {
+  gaps 4
+  center-focused-column "never"
+  preset-column-widths {
+    proportion 0.33333
+    proportion 0.5
+    proportion 0.66667
+  }
+
+  default-column-width { proportion 0.5; }
+
+  border {
+    width 2
+    active-color "#c4a7e7"
+    inactive-color "#6e6a86"
+  }
+
+  focus-ring {
+    off
+  }
+
+  background-color "transparent"
+
+  always-center-single-column
+
+  tab-indicator {
+    width 4
+    gap -4
+    length total-proportion=0.3
+    position "top"
+    // place-within-column
+    active-color "#9ccfd8"
+  }
+}
+
+// ██████  ██    ██ ██      ███████ ███████ 
+// ██   ██ ██    ██ ██      ██      ██      
+// ██████  ██    ██ ██      █████   ███████ 
+// ██   ██ ██    ██ ██      ██           ██ 
+// ██   ██  ██████  ███████ ███████ ███████ 
+
+overview {
+  workspace-shadow {
+    off
+  }
+}
+
+// Make the wallpaper stationary, rather than moving with workspaces.
+layer-rule {
+  match namespace="^swww-daemon$"
+  place-within-backdrop true
+}
+
+layer-rule {
+  match namespace="^notifications$"
+  block-out-from "screen-capture"
+}
+
+window-rule {
+  match app-id=r#"zen$"# title="^Picture-in-Picture$"
+  open-floating true
+}
+
+window-rule {
+  geometry-corner-radius 8
+  clip-to-geometry true
+}
+
+window-rule {
+  match app-id=r#"^org\.telegram\.desktop$"#
+  open-maximized true
+  block-out-from "screen-capture"
+}
+
+window-rule {
+  match app-id=r#"^org\.telegram\.desktop$"# title="^Media viewer$"
+  open-fullscreen false
+  open-floating true
+
+  focus-ring {
+    off
+  }
+
+  border {
+    off
+  }
+}
+
+window-rule {
+  match app-id=r#"^com\.obsproject\.Studio$"#
+  open-maximized true
+}
+
+// Floating windows
+window-rule {
+  match app-id="^qt5ct$"
+  match app-id="^qt6ct$"
+  match app-id=r#"^org\.pulseaudio\.pavucontrol$"#
+  match app-id="^opensnitch_ui$"
+  match app-id="^kvantummanager$"
+  match app-id="^blueman-manager$"
+
+  open-fullscreen false
+  open-maximized false
+  open-floating true
+
+  default-column-width { proportion 0.5; }
+  default-window-height { proportion 0.5; }
+}
+
+// ██████  ██ ███    ██ ██████  ███████ 
+// ██   ██ ██ ████   ██ ██   ██ ██      
+// ██████  ██ ██ ██  ██ ██   ██ ███████ 
+// ██   ██ ██ ██  ██ ██ ██   ██      ██ 
+// ██████  ██ ██   ████ ██████  ███████ 
+                                     
+binds {
+  Mod+Shift+Slash { show-hotkey-overlay; }
+
+  Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+  Mod+Space hotkey-overlay-title="Run an Application: rofi" { spawn "sh" "-c" "rofi -show drun"; } 
+  Super+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
+
+  XF86AudioMute allow-when-locked=true { spawn "sh" "-c" "~/.config/hypr/scripts/volumecontrol.sh -o m"; }
+  XF86AudioMicMute allow-when-locked=true { spawn "sh" "-c" "~/.config/hypr/scripts/volumecontrol.sh -i m"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn "sh" "-c" "~/.config/hypr/scripts/volumecontrol.sh -o d"; }
+  XF86AudioRaiseVolume allow-when-locked=true { spawn "sh" "-c" "~/.config/hypr/scripts/volumecontrol.sh -o i"; }
+
+  XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
+  XF86AudioPause allow-when-locked=true { spawn "playerctl" "play-pause"; }
+  XF86AudioNext allow-when-locked=true { spawn "playerctl" "next"; }
+  XF86AudioPrev allow-when-locked=true { spawn "playerctl" "previous"; }
+
+  XF86MonBrightnessUp allow-when-locked=true { spawn "sh" "-c" "~/.config/hypr/scripts/brightnesscontrol.sh i"; }
+  XF86MonBrightnessDown allow-when-locked=true { spawn "sh" "-c" "~/.config/hypr/scripts/brightnesscontrol.sh d"; }
+
+  // Screenshot/Screencapture
+  Mod+P { spawn "sh" "-c" "~/.config/hypr/scripts/screenshot.sh s"; } // drag to snip an area / click on a window to print it
+  Mod+Ctrl+P { spawn "sh" "-c" "~/.config/hypr/scripts/screenshot.sh sf"; } // frozen screen, drag to snip an area / click on a window to print it
+  Mod+Alt+P { spawn "sh" "-c" "~/.config/hypr/scripts/screenshot.sh m"; } // print focused monitor
+  Print { spawn "sh" "-c" "~/.config/hypr/scripts/screenshot.sh p"; } // print all monitor outputs
+  Mod+Shift+P { spawn "sh" "-c" "~/.config/hypr/scripts/screenrecord.sh s"; } // record selection
+  Mod+Alt+Shift+P { spawn "sh" "-c" "~/.config/hypr/scripts/screenrecord.sh f"; } // record fullscreen
+
+  Mod+O repeat=false { toggle-overview; }
+
+  Mod+Q { close-window; }
+
+  Mod+Left  { focus-column-left; }
+  Mod+Down  { focus-window-down; }
+  Mod+Up    { focus-window-up; }
+  Mod+Right { focus-column-right; }
+  Mod+H     { focus-column-left; }
+  // Mod+J     { focus-window-down; }
+  // Mod+K     { focus-window-up; }
+  Mod+L     { focus-column-right; }
+
+  Mod+Ctrl+Left  { move-column-left; }
+  Mod+Ctrl+Down  { move-window-down; }
+  Mod+Ctrl+Up    { move-window-up; }
+  Mod+Ctrl+Right { move-column-right; }
+  Mod+Ctrl+H     { move-column-left; }
+  // Mod+Ctrl+J     { move-window-down; }
+  // Mod+Ctrl+K     { move-window-up; }
+  Mod+Ctrl+L     { move-column-right; }
+
+  Mod+J     { focus-window-or-workspace-down; }
+  Mod+K     { focus-window-or-workspace-up; }
+  Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
+  Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+
+  Mod+Home { focus-column-first; }
+  Mod+End  { focus-column-last; }
+  Mod+Ctrl+Home { move-column-to-first; }
+  Mod+Ctrl+End  { move-column-to-last; }
+
+  Mod+Shift+Left  { focus-monitor-left; }
+  Mod+Shift+Down  { focus-monitor-down; }
+  Mod+Shift+Up    { focus-monitor-up; }
+  Mod+Shift+Right { focus-monitor-right; }
+  Mod+Shift+H     { focus-monitor-left; }
+  Mod+Shift+J     { focus-monitor-down; }
+  Mod+Shift+K     { focus-monitor-up; }
+  Mod+Shift+L     { focus-monitor-right; }
+
+  Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+  Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+  Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+  Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+  Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+  Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+  Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+  Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+  // Alternatively, there are commands to move just a single window:
+  // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
+  // ...
+
+  // And you can also move a whole workspace to another monitor:
+  // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
+  // ...
+
+  Mod+Page_Down      { focus-workspace-down; }
+  Mod+Page_Up        { focus-workspace-up; }
+  Mod+U              { focus-workspace-down; }
+  Mod+I              { focus-workspace-up; }
+  Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+  Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+  Mod+Ctrl+U         { move-column-to-workspace-down; }
+  Mod+Ctrl+I         { move-column-to-workspace-up; }
+
+  // Alternatively, there are commands to move just a single window:
+  // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
+  // ...
+
+  Mod+Shift+Page_Down { move-workspace-down; }
+  Mod+Shift+Page_Up   { move-workspace-up; }
+  Mod+Shift+U         { move-workspace-down; }
+  Mod+Shift+I         { move-workspace-up; }
+
+  Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+  Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+  Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+  Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+  Mod+WheelScrollRight      { focus-column-right; }
+  Mod+WheelScrollLeft       { focus-column-left; }
+  Mod+Ctrl+WheelScrollRight { move-column-right; }
+  Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
+  Mod+Shift+WheelScrollDown      { focus-column-right; }
+  Mod+Shift+WheelScrollUp        { focus-column-left; }
+  Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+  Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+  Mod+1 { focus-workspace 1; }
+  Mod+2 { focus-workspace 2; }
+  Mod+3 { focus-workspace 3; }
+  Mod+4 { focus-workspace 4; }
+  Mod+5 { focus-workspace 5; }
+  Mod+6 { focus-workspace 6; }
+  Mod+7 { focus-workspace 7; }
+  Mod+8 { focus-workspace 8; }
+  Mod+9 { focus-workspace 9; }
+  Mod+Ctrl+1 { move-column-to-workspace 1; }
+  Mod+Ctrl+2 { move-column-to-workspace 2; }
+  Mod+Ctrl+3 { move-column-to-workspace 3; }
+  Mod+Ctrl+4 { move-column-to-workspace 4; }
+  Mod+Ctrl+5 { move-column-to-workspace 5; }
+  Mod+Ctrl+6 { move-column-to-workspace 6; }
+  Mod+Ctrl+7 { move-column-to-workspace 7; }
+  Mod+Ctrl+8 { move-column-to-workspace 8; }
+  Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+  // Alternatively, there are commands to move just a single window:
+  // Mod+Ctrl+1 { move-window-to-workspace 1; }
+
+  // Switches focus between the current and the previous workspace.
+  Mod+Tab { focus-workspace-previous; }
+
+  Mod+Comma  { consume-or-expel-window-left; }
+
+  Mod+R { switch-preset-column-width; }
+  Mod+Shift+R { switch-preset-window-height; }
+  Mod+Ctrl+R { reset-window-height; }
+  Mod+F { maximize-column; }
+  Mod+Shift+F { fullscreen-window; }
+
+  Mod+Ctrl+F { expand-column-to-available-width; }
+
+  Mod+C { center-column; }
+
+  Mod+Ctrl+C { center-visible-columns; }
+
+  Mod+Minus { set-column-width "-10%"; }
+  Mod+Equal { set-column-width "+10%"; }
+
+  Mod+Shift+Minus { set-window-height "-10%"; }
+  Mod+Shift+Equal { set-window-height "+10%"; }
+
+  Mod+V       { toggle-window-floating; }
+  Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+  Mod+W { toggle-column-tabbed-display; }
+
+  // Print { screenshot; }
+  // Ctrl+Print { screenshot-screen; }
+  // Alt+Print { screenshot-window; }
+
+  Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+  Mod+Shift+E { quit; }
+  Ctrl+Alt+Delete { quit; }
+
+  Ctrl+Escape { spawn "sh" "-c" "killall waybar || waybar"; }
+}

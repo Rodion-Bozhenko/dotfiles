@@ -24,6 +24,7 @@
 	"modules-center": [
 		"custom/padd",
 		"hyprland/workspaces",
+    // "wlr/taskbar",
 		// "hyprland/window",
 		"custom/padd"
 	],
@@ -58,6 +59,10 @@
 		},
 		"modules": ["battery", "temperature", "cpu", "memory", "disk"]
 	},
+
+  "wlr/taskbar": {
+      "tooltip-format": "{title} | {app_id}",
+  },
 
 	"tray": {
 		"icon-size": 16

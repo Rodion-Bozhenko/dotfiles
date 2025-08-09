@@ -1,7 +1,9 @@
-
 [font]
 normal = {family = "Hack Nerd Font"}
 size = 12
 
 [general]
 import = ["~/.config/alacritty/rose-pine.toml"]
+
+[window]
+decorations = "none"
