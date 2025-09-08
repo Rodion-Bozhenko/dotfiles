@@ -1,3 +1,28 @@
+-- Autocmd to track macro recording, And redraw statusline, which trigger
+-- macro function of mini.statusline
+vim.api.nvim_create_autocmd("RecordingEnter", {
+  pattern = "*",
+  callback = function()
+    vim.cmd("redrawstatus")
+  end,
+})
+
+-- Autocmd to track the end of macro recording
+vim.api.nvim_create_autocmd("RecordingLeave", {
+  pattern = "*",
+  callback = function()
+    vim.cmd("redrawstatus")
+  end,
+})
+
+local check_macro_recording = function()
+  if vim.fn.reg_recording() ~= "" then
+    return "Recording @" .. vim.fn.reg_recording()
+  else
+    return ""
+  end
+end
+
 return {
   {
     "echasnovski/mini.nvim",
@@ -24,8 +49,9 @@ return {
             :gsub("%[mac%]", os_symbols.mac)
 
         return MiniStatusline.combine_groups({
-          { hl = mode_hl,                 strings = { string.upper(mode) } },
-          { hl = "MiniStatuslineDevinfo", strings = { git, diff, diagnostics, lsp } },
+          { hl = mode_hl,                  strings = { string.upper(mode) } },
+          { hl = "MiniStatuslineDevinfo",  strings = { git, diff, diagnostics, lsp } },
+          { hl = "MiniStatusLineFilename", strings = { check_macro_recording() } },
           "%<", -- Mark general truncate point
           { hl = "MiniStatuslineFilename", strings = { filename } },
           "%=", -- End left alignment
