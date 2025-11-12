@@ -46,23 +46,23 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- oil.nvim
 keymap.set("n", "<leader>e", "<cmd>Oil<CR>")
 
-keymap.set("n", "]d",
-           function()
-             vim.diagnostic.jump({
-               count = 1,
-               float = {
-                 border =
-                 "rounded"
-               }
-             })
-           end)
-keymap.set("n", "[d",
-           function()
-             vim.diagnostic.jump({
-               count = -1,
-               float = {
-                 border =
-                 "rounded"
-               }
-             })
-           end)
+-- keymap.set("n", "]d",
+--            function()
+--              vim.diagnostic.jump({
+--                count = 1,
+--                float = {
+--                  border =
+--                  "rounded"
+--                }
+--              })
+--            end)
+-- keymap.set("n", "[d",
+--            function()
+--              vim.diagnostic.jump({
+--                count = -1,
+--                float = {
+--                  border =
+--                  "rounded"
+--                }
+--              })
+--            end)
