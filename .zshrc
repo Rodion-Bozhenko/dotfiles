@@ -23,6 +23,9 @@ export LESS='-R --use-color'
 
 export HF_HUB_OFFLINE=1
 
+# zk
+export ZK_NOTEBOOK_DIR=~/personal/zk_notebook/notebook
+
 alias v="nvim"
 alias vf=". ~/bin/vim-fzf"
 alias s="~/bin/zellij-sessionizer"
@@ -67,3 +70,9 @@ source ~/.config/zsh/rose-pine-man/rose-pine-man.zsh
 colorize_man rose-pine transparent
 
 eval "$(starship init zsh)"
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/rodion/.dart-cli-completion/zsh-config.zsh ]] && . /home/rodion/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
