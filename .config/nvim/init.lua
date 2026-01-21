@@ -1,5 +1,6 @@
 require("custom.lazy")
 require("custom.autocommands")
+require("custom.commands")
 
 vim.diagnostic.config({ virtual_text = true })
 
