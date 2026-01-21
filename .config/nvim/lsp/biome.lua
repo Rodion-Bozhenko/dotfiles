@@ -14,6 +14,7 @@ return {
     "typescriptreact",
     "vue",
   },
-  root_markers = { "biome.json", "biome.jsonc" },
-  workspace_required = true
+  workspace_required = true,
+  root_dir = vim.fs.dirname(vim.fs.find({ "biome.json", "biome.jsonc" },
+                                        { upward = true })[1]),
 }
