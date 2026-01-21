@@ -11,7 +11,7 @@ spawn-at-startup "nm-applet"
 spawn-at-startup "gammastep"
 spawn-at-startup "fcitx5"
 spawn-at-startup "swww-daemon"
-spawn-at-startup "swww img ~/Pictures/cyberpunk-2077-2.jpg"
+spawn-at-startup "swww img ~/Pictures/landscape.jpeg"
 spawn-at-startup "opensnitch-ui"
 spawn-at-startup "gnome-keyring-daemon --start --components=secrets,ssh"
 spawn-at-startup "dunst"
@@ -28,10 +28,10 @@ environment {
   XDG_SESSION_TYPE "wayland"
   XDG_SESSION_DESKTOP "niri"
   QT_QPA_PLATFORM "wayland"
-  QT_STYLE_OVERRIDE "kvantum"
-  QT_QPA_PLATFORMTHEME "qt5ct"
   QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
-  QT_AUTO_SCREEN_SCALE_FACTOR "1"
+  QT_STYLE_OVERRIDE "kvantum"
+  QT_QPA_PLATFORMTHEME "qt6ct"
+  // QT_AUTO_SCREEN_SCALE_FACTOR "1"
   MOZ_ENABLE_WAYLAND "1"
   ELECTRON_OZONE_PLATFORM_HINT "auto"
   XDG_MENU_PREFIX "arch-"
@@ -75,7 +75,7 @@ input {
 
   warp-mouse-to-focus
 
-  focus-follows-mouse max-scroll-amount="90%"
+  focus-follows-mouse max-scroll-amount="0%"
 }
 
 //  ██████  ██    ██ ████████ ██████  ██    ██ ████████ 
@@ -119,7 +119,7 @@ layout {
 
   background-color "transparent"
 
-  always-center-single-column
+  // always-center-single-column
 
   tab-indicator {
     width 4
@@ -204,6 +204,22 @@ window-rule {
 
   default-column-width { proportion 0.5; }
   default-window-height { proportion 0.5; }
+}
+
+// Steam notifications
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
+//  █████  ███    ██ ██ ███    ███  █████  ████████ ██  ██████  ███    ██ ███████ 
+// ██   ██ ████   ██ ██ ████  ████ ██   ██    ██    ██ ██    ██ ████   ██ ██      
+// ███████ ██ ██  ██ ██ ██ ████ ██ ███████    ██    ██ ██    ██ ██ ██  ██ ███████ 
+// ██   ██ ██  ██ ██ ██ ██  ██  ██ ██   ██    ██    ██ ██    ██ ██  ██ ██      ██ 
+// ██   ██ ██   ████ ██ ██      ██ ██   ██    ██    ██  ██████  ██   ████ ███████ 
+                                                                               
+animations {
+  slowdown 0.7
 }
 
 // ██████  ██ ███    ██ ██████  ███████ 
