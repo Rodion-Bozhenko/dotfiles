@@ -59,35 +59,9 @@ return {
         select = {
           enable = true,
           lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-          keymaps = {
-            ["aa"] = "@parameter.outer",
-            ["ia"] = "@parameter.inner",
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-            ["ac"] = "@class.outer",
-            ["ic"] = "@class.inner",
-            ["ai"] = "@conditional.outer",
-            ["ii"] = "@conditional.inner",
-          },
           include_surrounding_whitespace = true,
         },
       }
-      do -- move
-        vim.keymap.set({ "n", "x", "o" }, "]]", function()
-          require("nvim-treesitter-textobjects.move").goto_next_start(
-            "@function.outer",
-            "textobjects"
-          )
-          vim.cmd("normal! zz")
-        end)
-        vim.keymap.set({ "n", "x", "o" }, "[[", function()
-          require("nvim-treesitter-textobjects.move").goto_previous_start(
-            "@function.outer",
-            "textobjects"
-          )
-          vim.cmd("normal! zz")
-        end)
-      end
     end,
   },
   {
