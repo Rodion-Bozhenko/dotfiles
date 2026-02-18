@@ -69,26 +69,6 @@ vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
 vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap)")
 vim.keymap.set("n", "S", "<Plug>(leap-from-window)")
 
--- keymap.set("n", "]d",
---            function()
---              vim.diagnostic.jump({
---                count = 1,
---                float = {
---                  border =
---                  "rounded"
---                }
---              })
---            end)
--- keymap.set("n", "[d",
---            function()
---              vim.diagnostic.jump({
---                count = -1,
---                float = {
---                  border =
---                  "rounded"
---                }
---              })
---            end)
 -- Treesitter
 vim.keymap.set({ "x", "o" }, "af", function()
   require "nvim-treesitter-textobjects.select".select_textobject(
