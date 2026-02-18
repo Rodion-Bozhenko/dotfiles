@@ -14,7 +14,7 @@ return {
         "c", "css", "dockerfile", "go", "gomod", "html", "hyprlang", "javascript",
         "json", "tsx",
         "just", "rust", "sql", "templ", "terraform", "toml", "typescript", "lua",
-        "vim", "vimdoc", "query", "markdown", "markdown_inline", "xml"
+        "vim", "vimdoc", "query", "markdown", "markdown_inline", "xml", "yaml"
       }
 
       local result = {}
